@@ -12,7 +12,7 @@ Objective c 数据库访问工具
 [TestEntity createTable];
 ```
 #数据保存 
-` ` ` objectivec
+```
     开启事务
     [ORMDB beginTransaction];
     TestEntity *test=[[TestEntity alloc] init];
@@ -38,7 +38,7 @@ Objective c 数据库访问工具
 
     [test save:@[@"mId"]];//保存数据
     [ORMDB commitTransaction];
-` ` ` 
+```
 
 #查询数据
 ```
