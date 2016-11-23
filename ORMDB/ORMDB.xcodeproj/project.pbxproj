@@ -15,6 +15,7 @@
 		99B8DEF41DE5B0510041AF8C /* ClassC.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEEF1DE5B0510041AF8C /* ClassC.m */; };
 		99B8DEF51DE5B0510041AF8C /* TestBEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEF11DE5B0510041AF8C /* TestBEntity.m */; };
 		99B8DEF61DE5B0510041AF8C /* TestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEF31DE5B0510041AF8C /* TestEntity.m */; };
+		99B8DEF81DE5B0DF0041AF8C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		99B8DEF11DE5B0510041AF8C /* TestBEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBEntity.m; sourceTree = "<group>"; };
 		99B8DEF21DE5B0510041AF8C /* TestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntity.h; sourceTree = "<group>"; };
 		99B8DEF31DE5B0510041AF8C /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntity.m; sourceTree = "<group>"; };
+		99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B8DEF81DE5B0DF0041AF8C /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,7 @@
 		99B8DECE1DE5B0160041AF8C = {
 			isa = PBXGroup;
 			children = (
+				99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */,
 				99B8DEE11DE5B0300041AF8C /* ORM */,
 				99B8DED91DE5B0160041AF8C /* ORMDB */,
 				99B8DED81DE5B0160041AF8C /* Products */,
