@@ -2,16 +2,18 @@
 Objective c 数据库访问工具
 
 支持数据类型  int float double number class array
-
+```
 #import "NSObject+ORM.h"
 #import "ORMDB.h"
-
+```
 
 #创建数据库 
+```
 [TestEntity createTable];
-
+```
 #数据保存 
-开启事务
+```
+    开启事务
     [ORMDB beginTransaction];
     TestEntity *test=[[TestEntity alloc] init];
     test.name=@"测试";
@@ -36,13 +38,17 @@ Objective c 数据库访问工具
 
     [test save:@[@"mId"]];//保存数据
     [ORMDB commitTransaction];
-
+```
 
 #查询数据
+```
     TestEntity *t=[TestEntity getObject:@[@"mId"] withValue:@[@(1)]];
-
+```
 #查询数据列表
+```
     NSMutableArray *arrt=[TestEntity list:@[@"mId"] withValue:@[@(1)] ];
-
+```
 #清空表数据
+```
     [TestEntity clearTable];
+```
