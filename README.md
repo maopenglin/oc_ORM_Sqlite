@@ -1,10 +1,11 @@
 
-# orm
-Objective c 数据库访问工具
+# ocORM
+Objective C 实体对象转换成sql 语句，支持数据类型  int float double number class array
+
 ##安装
  pod 'ocORM', '~> 2.0.0'
 
-###支持数据类型  int float double number class array
+##使用
 ```
 #import "NSObject+ORM.h"
 #import "ORMDB.h"
@@ -16,7 +17,7 @@ Objective c 数据库访问工具
 ```
 ##数据保存 
 ```
-    开启事务
+    //开启事务
     [ORMDB beginTransaction];
     TestEntity *test=[[TestEntity alloc] init];
     test.name=@"测试";
@@ -55,3 +56,5 @@ Objective c 数据库访问工具
 ```
     [TestEntity clearTable];
 ```
+####开启日志调试 运行生成sql语句效果如下
+<img src="https://github.com/maopenglin/orm/blob/master/m1.png?raw=true" width="705" height="308" align=center/>
