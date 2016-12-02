@@ -1,6 +1,8 @@
 
 # orm
 Objective c 数据库访问工具
+##安装
+ pod 'ocORM', '~> 2.0.0'
 
 ###支持数据类型  int float double number class array
 ```
