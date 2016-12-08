@@ -3,7 +3,7 @@
 Objective C 实体对象转换成sql 语句，支持数据类型  int float double number class array
 
 ##安装
- pod 'ocORM', '~> 2.0.0'
+ pod 'ocORM', '~> 2.0.1'
 
 ##使用
 ```
