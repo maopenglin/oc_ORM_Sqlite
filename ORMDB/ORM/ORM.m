@@ -13,8 +13,191 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+
+typedef NS_OPTIONS (NSUInteger ,ORMDBDataType){
+   ORMDBDataTypeUnknown,
+    ORMDBDataTypeBool,
+    ORMDBDataTypeInt,
+    ORMDBDataTypeFloat,
+    ORMDBDataTypeDouble,
+    ORMDBDataTypeClass,
+    ORMDBDataTypeString,
+    ORMDBDataTypeNumber,
+    ORMDBDataTypeArray,
+    ORMDBDataTypeDictionary
+   
+};
+
+ORMDBDataType ORMDBGetDataType(const char *typeEncoding){
+
+    char *type = (char *)typeEncoding;
+    if (!type) return ORMDBDataTypeUnknown;
+    size_t len = strlen(type);
+    if (len == 0) return ORMDBDataTypeUnknown;
+    switch (*type) {
+        case 'B': return ORMDBDataTypeBool;
+        case 'c': return ORMDBDataTypeInt;
+        case 'C': return ORMDBDataTypeInt;
+        case 's': return ORMDBDataTypeInt;
+        case 'S': return ORMDBDataTypeInt;
+        case 'i': return ORMDBDataTypeInt;
+        case 'I': return ORMDBDataTypeInt;
+        case 'l': return ORMDBDataTypeInt;
+        case 'L': return ORMDBDataTypeInt;
+        case 'q': return ORMDBDataTypeInt;
+        case 'Q': return ORMDBDataTypeInt;
+        case 'f': return ORMDBDataTypeFloat;
+        case 'd': return ORMDBDataTypeDouble;
+        case 'D': return ORMDBDataTypeDouble;
+        default:return  ORMDBDataTypeUnknown;
+          
+    }
+    return ORMDBDataTypeUnknown;
+}
+
+@interface ORMDBClassPropertyInfo : NSObject
+@property (nonatomic,assign, readonly)objc_property_t property;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, strong, readonly) NSString *typeEncoding;
+@property (nonatomic, assign, readonly) ORMDBDataType type;
+@property (nullable, nonatomic, assign, readonly) Class cls;
+@property (nullable, nonatomic, strong, readonly) NSString *protocol;
+@property (nonatomic, assign, readonly) SEL getter;
+@property (nonatomic, assign, readonly) SEL setter;
+@end
+
+@implementation ORMDBClassPropertyInfo
+
+- (instancetype)initWithProperty:(objc_property_t)property{
+     if (!property) return nil;
+    self = [super init];
+    _property=property;
+    const char *name = property_getName(property);
+    if (name) {
+        _name = [NSString stringWithUTF8String:name];
+    }
+   _type=ORMDBDataTypeUnknown;
+    unsigned int attrCount;
+    objc_property_attribute_t *attrs = property_copyAttributeList(property, &attrCount);
+    for (unsigned int i = 0; i < attrCount; i++) {
+         switch (attrs[i].name[0]) {
+            case 'T':{
+                _typeEncoding = [NSString stringWithUTF8String:attrs[i].value];
+                if (attrs[i].value) {
+                    _type=ORMDBGetDataType(attrs[i].value);
+                   
+                    if(_type==ORMDBDataTypeUnknown){
+                        NSScanner *scanner = [NSScanner scannerWithString:_typeEncoding];
+                        if (![scanner scanString:@"@\"" intoString:NULL]) continue;
+                        
+                        NSString *clsName = nil;
+                        if ([scanner scanUpToCharactersFromSet: [NSCharacterSet characterSetWithCharactersInString:@"\"<"] intoString:&clsName]) {
+                            if (clsName.length) {
+                                _cls = objc_getClass(clsName.UTF8String);
+                                if ([clsName compare:@"NSString"]==NSOrderedSame) {
+                                    _type=ORMDBDataTypeString;
+                                }else if([clsName compare:@"NSNumber"]==NSOrderedSame){
+                                    _type=ORMDBDataTypeNumber;
+                                }else if([clsName compare:@"NSArray"]==NSOrderedSame||[clsName compare:@"NSMutableArray"]==NSOrderedSame){
+                                    _type=ORMDBDataTypeArray;
+                                }
+//                                else if([clsName compare:@"NSDictionary"]==NSOrderedSame||[clsName compare:@"NSMutableDictionary"]==NSOrderedSame){
+//                                    _type=ORMDBDataTypeDictionary;
+//                                }
+                            };
+                        }
+                        while ([scanner scanString:@"<" intoString:NULL]) {
+                            NSString* protocol = nil;
+                            if ([scanner scanUpToString:@">" intoString: &protocol]) {
+                                _protocol=protocol;
+                                break;
+                            }
+                            [scanner scanString:@">" intoString:NULL];
+                        }
+
+                    }
+                        
+                }
+            }
+            break;
+                
+             
+                
+        }
+    
+    }
+    
+    return self;
+}
+
+@end
+
+@interface ORMDBClassInfo : NSObject
+@property (nonatomic, assign, readonly) Class cls;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nullable, nonatomic, strong, readonly) NSMutableDictionary<NSString *, ORMDBClassPropertyInfo *> *propertyInfos;
+@end
+@implementation ORMDBClassInfo
+- (instancetype)initWithClass:(Class)cls {
+    if (!cls) {
+        return nil;
+    }
+    
+    self = [super init];
+    if (self) {
+        unsigned int propertyCount = 0;
+        objc_property_t *properties = class_copyPropertyList(cls, &propertyCount);
+        if (properties) {
+            NSMutableDictionary *propertyInfos = [NSMutableDictionary new];
+            _propertyInfos = propertyInfos;
+            
+            for (unsigned int i = 0; i < propertyCount; i++) {
+                ORMDBClassPropertyInfo *property=[[ORMDBClassPropertyInfo alloc] initWithProperty:properties[i]];
+                if(property.name) _propertyInfos[property.name]=property;
+            }
+            free(properties);
+          
+        }
+    }
+    return self;
+}
++ (instancetype)metaWithClass:(Class)cls {
+    if (!cls) return nil;
+    static CFMutableDictionaryRef cache;
+    static dispatch_once_t onceToken;
+    static dispatch_semaphore_t lock;
+    dispatch_once(&onceToken, ^{
+        cache = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+        lock = dispatch_semaphore_create(1);
+    });
+    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+    ORMDBClassInfo *meta = CFDictionaryGetValue(cache, (__bridge const void *)(cls));
+    dispatch_semaphore_signal(lock);
+    if (!meta) {
+        meta = [[ORMDBClassInfo alloc] initWithClass:cls];
+        if (meta) {
+            dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+            CFDictionarySetValue(cache, (__bridge const void *)(cls), (__bridge const void *)(meta));
+            dispatch_semaphore_signal(lock);
+        }
+    }
+    return meta;
+}
+
+
+@end
 @implementation ORM
+- (void)test:(Class )cls{
+   ORMDBClassInfo *obj= [ORMDBClassInfo metaWithClass:cls];
+    [ORMDBClassInfo metaWithClass:cls];
+    NSLog(@"obj.name:%@",obj.name);
+    for (NSString *key in obj.propertyInfos) {
+        ORMDBClassPropertyInfo *info=obj.propertyInfos[key];
+        NSLog(@" name: %@ cls: %@ dbtype:%li,protocol:%@", info.name,info.cls,info.type,info.protocol);
+    }
+}
 + (void)createTableFromClass:(Class) cls{
+    
     NSMutableArray *arr=[ORM parseClass:cls];
     NSString *sql=[NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (",cls];
     for (int i=0; i<arr.count; i++) {

@@ -10,6 +10,7 @@
 
 @implementation ClassC
 +(NSString *)foreignKey{
+   
     return @"pID";
 }
 @end

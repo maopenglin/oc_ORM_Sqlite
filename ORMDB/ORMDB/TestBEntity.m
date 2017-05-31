@@ -12,4 +12,20 @@
 +(NSString *)foreignKey{
   return @"cID";
 }
+- (void)xxx{
+    NSLog(@"print xxx");
+}
+- (void)testMedhod{
+    testok();
+   
+    staticmethod();
+}
+
+ id  testok(){
+     NSLog(@"abeeddd");
+    return @"abcdef";
+}
+void staticmethod(){
+    printf("abc");
+}
 @end

@@ -12,10 +12,19 @@
 
 #import "NSObject+ORM.h"
 #import "ORMDB.h"
+
+#import "ORM.h"
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         
+        ORM *orm=[[ORM alloc] init];
+        [orm test:[TestEntity class]];
         
+        NSString *s=@"123456789";
+        NSRange range=NSMakeRange(2, 3);
+       NSLog(@"range:%@", [s substringWithRange:range]);
+        
+        /*
         [TestEntity createTable];
         [ORMDB beginTransaction];
         TestEntity *test=[[TestEntity alloc] init];
@@ -54,6 +63,7 @@ int main(int argc, const char * argv[]) {
         [TestEntity clearTable];
         t=[TestEntity getObject:@[@"mId"] withValue:@[@(1)]];
         NSLog(@"test.b:%@ classB cID %i count:%i",t.name,[t.classB.cID intValue],(int)t.clsC.count);
+         */
     }
     return 0;
 }
