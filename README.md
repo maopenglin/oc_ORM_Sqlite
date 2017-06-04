@@ -12,7 +12,7 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
 
 ##创建数据库 
 ```
-[TestEntity createTable];
+[ClassInfo createTable];
 ```
 ##数据保存 
 ```
@@ -41,6 +41,16 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
     classInfo.teacher=teacher;
 
     [classInfo save:@[@"classNumber"]];
+
+
+    //批量保存
+    [Student saveListData:@[@"name"] andBlock:^(NSMutableArray *datas) {
+    for(int i=0;i<20000;i++){
+        [datas addObject:one];
+    }
+
+}];
+
     
 ```
 
