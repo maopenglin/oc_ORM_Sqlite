@@ -8,62 +8,75 @@
 
 #import <Foundation/Foundation.h>
 
-#import "TestEntity.h"
+#import "ClassInfo.h"
+
 
 #import "NSObject+ORM.h"
 #import "ORMDB.h"
-
-#import "ORM.h"
+double t(double last, char* key){
+    clock_t now = clock();
+    printf("time:%fs \t key:%s \n", (last != 0) ? (double)(now - last) / CLOCKS_PER_SEC : 0, key);
+    return now;
+}
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+      
+      
+        //return 0;
+        [ClassInfo createTable];
         
-        ORM *orm=[[ORM alloc] init];
-        [orm test:[TestEntity class]];
+       ClassInfo *a= [ClassInfo getObject:@[@"classNumber"] withValue:@[@(1)]];
+        NSLog(@"a.dataInfo:%@ ,%@",a.dataInfo,a.dataInfo.class);
+        //return 0;
+      
+            ClassInfo *classInfo=[[ClassInfo alloc] init];
+            classInfo.className=@"三班";
+            classInfo.roomId=120;
+            classInfo.classNumber=@(1);
+            classInfo.classAddress=@"北京市海淀区";
+            classInfo.dataInfo=@{@"a":@"b",@"c":@"d"};
+            //[classInfo save:@[@"classNumber"]];
         
-        NSString *s=@"123456789";
-        NSRange range=NSMakeRange(2, 3);
-       NSLog(@"range:%@", [s substringWithRange:range]);
+            Student *one=[[Student alloc] init];
+            one.name=@"小红";
+            one.age=15;
+            
+            Student *two=[[Student alloc] init];
+            two.name=@"小民";
+            two.age=18;
+            
+            Teacher *teacher=[[Teacher alloc] init];
+            teacher.name=@"班主任";
+            
+            classInfo.student=@[one,two].copy;
+            classInfo.teacher=teacher;
+            
+            [classInfo save:@[@"classNumber"]];
         
-        /*
-        [TestEntity createTable];
-        [ORMDB beginTransaction];
-        TestEntity *test=[[TestEntity alloc] init];
-        test.name=@"测试";
-        test.age=@(18);
-        test.mId=@(1);
+        [classInfo save:@[@"classNumber"]];
+        double t1 = t(0, "");
         
-        TestBEntity *b=[[TestBEntity alloc] init];
-        b.address=@"北京市海淀区";
-        test.classB=b;
         
-        NSMutableArray *arr=[[NSMutableArray alloc] init];
-        ClassC *c1=[[ClassC alloc] init];
-        c1.pA=@"pa 1";
-        c1.pB=@"pb 1";
-        [arr addObject:c1];
+            [classInfo save:@[@"classNumber"]];
+    
+
         
-        ClassC *c2=[[ClassC alloc] init];
-        c2.pA=@"pa 2";
-        c2.pB=@"pb 2";
-        [arr addObject:c2];
-        test.clsC=@[c1,c2].mutableCopy;
+       
+       
         
-        [test save:@[@"mId"]];
-        [ORMDB commitTransaction];
+        //dispatch_async(dispatch_get_main_queue(), ^{
+            [Student saveListData:@[@"name"] andBlock:^(NSMutableArray *datas) {
+                for(int i=0;i<20000;i++){
+                    [datas addObject:one];
+                }
+                
+            }];
+       // });
         
-        TestEntity *t=[TestEntity getObject:@[@"mId"] withValue:@[@(1)]];
+        t(t1, "end");
+       //ClassInfo *dbResult= [ClassInfo getObject:@[@"classNumber"] withValue:@[@1]];
         
-        NSMutableArray *arrt=[TestEntity list:@[@"mId"] withValue:@[@(1)] ];
-        NSLog(@"arrt %@",arrt);
-        for (int i=0; i<t.clsC.count; i++) {
-            ClassC *c=t.clsC[i];
-            NSLog(@"c pa:%@,c pb:%@",c.pA,c.pB);
-        }
-        NSLog(@"test.b:%@ classB cID %i count:%i",t.name,[t.classB.cID intValue],(int)t.clsC.count);
-        [TestEntity clearTable];
-        t=[TestEntity getObject:@[@"mId"] withValue:@[@(1)]];
-        NSLog(@"test.b:%@ classB cID %i count:%i",t.name,[t.classB.cID intValue],(int)t.clsC.count);
-         */
+        NSLog(@"%@", @[@"a",@"b",@"c"].description);
     }
     return 0;
 }

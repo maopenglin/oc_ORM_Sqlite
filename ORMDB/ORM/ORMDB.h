@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define DBPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"/orm.db"]
-#define showsql true
+#define showsql false
 @interface ORMDB : NSObject
 +(void)beginTransaction;
 +(void)commitTransaction;
