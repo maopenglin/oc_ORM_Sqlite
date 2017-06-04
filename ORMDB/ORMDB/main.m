@@ -25,8 +25,8 @@ int main(int argc, const char * argv[]) {
         //return 0;
         [ClassInfo createTable];
         
-       ClassInfo *a= [ClassInfo getObject:@[@"classNumber"] withValue:@[@(1)]];
-        NSLog(@"a.dataInfo:%@ ,%@",a.dataInfo,a.dataInfo.class);
+//       ClassInfo *a= [ClassInfo getObject:@[@"classNumber"] withValue:@[@(1)]];
+//        NSLog(@"a.dataInfo:%@ ,%@",a.dataInfo,a.dataInfo.class);
         //return 0;
       
             ClassInfo *classInfo=[[ClassInfo alloc] init];
@@ -66,7 +66,7 @@ int main(int argc, const char * argv[]) {
         
         //dispatch_async(dispatch_get_main_queue(), ^{
             [Student saveListData:@[@"name"] andBlock:^(NSMutableArray *datas) {
-                for(int i=0;i<20000;i++){
+                for(int i=0;i<1;i++){
                     [datas addObject:one];
                 }
                 
