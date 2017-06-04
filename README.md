@@ -67,4 +67,4 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
     [ClassInfo clearTable];
 ```
 ####开启日志调试 运行生成sql语句效果如下
-<img src="https://github.com/maopenglin/orm/blob/master/m1.png?raw=true" width="705" height="308" align=center/>
+<img src="https://github.com/maopenglin/orm/blob/master/demo.png?raw=true" width="705" height="308" align=center/>
