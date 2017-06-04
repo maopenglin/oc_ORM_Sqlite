@@ -11,11 +11,10 @@
 		99B8DEEA1DE5B03F0041AF8C /* NSObject+ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE31DE5B03F0041AF8C /* NSObject+ORM.m */; };
 		99B8DEEB1DE5B03F0041AF8C /* ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE51DE5B03F0041AF8C /* ORM.m */; };
 		99B8DEEC1DE5B03F0041AF8C /* ORMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE71DE5B03F0041AF8C /* ORMDB.m */; };
-		99B8DEED1DE5B03F0041AF8C /* ORMDBAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE91DE5B03F0041AF8C /* ORMDBAttributes.m */; };
-		99B8DEF41DE5B0510041AF8C /* ClassC.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEEF1DE5B0510041AF8C /* ClassC.m */; };
-		99B8DEF51DE5B0510041AF8C /* TestBEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEF11DE5B0510041AF8C /* TestBEntity.m */; };
-		99B8DEF61DE5B0510041AF8C /* TestEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEF31DE5B0510041AF8C /* TestEntity.m */; };
 		99B8DEF81DE5B0DF0041AF8C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */; };
+		99CF632C1EE141CE0034B457 /* ClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CF632B1EE141CE0034B457 /* ClassInfo.m */; };
+		99CF632F1EE142030034B457 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CF632E1EE142030034B457 /* Student.m */; };
+		99CF63321EE142A80034B457 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CF63311EE142A80034B457 /* Teacher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,15 +38,13 @@
 		99B8DEE51DE5B03F0041AF8C /* ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORM.m; sourceTree = "<group>"; };
 		99B8DEE61DE5B03F0041AF8C /* ORMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORMDB.h; sourceTree = "<group>"; };
 		99B8DEE71DE5B03F0041AF8C /* ORMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORMDB.m; sourceTree = "<group>"; };
-		99B8DEE81DE5B03F0041AF8C /* ORMDBAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORMDBAttributes.h; sourceTree = "<group>"; };
-		99B8DEE91DE5B03F0041AF8C /* ORMDBAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORMDBAttributes.m; sourceTree = "<group>"; };
-		99B8DEEE1DE5B0510041AF8C /* ClassC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassC.h; sourceTree = "<group>"; };
-		99B8DEEF1DE5B0510041AF8C /* ClassC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassC.m; sourceTree = "<group>"; };
-		99B8DEF01DE5B0510041AF8C /* TestBEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBEntity.h; sourceTree = "<group>"; };
-		99B8DEF11DE5B0510041AF8C /* TestBEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBEntity.m; sourceTree = "<group>"; };
-		99B8DEF21DE5B0510041AF8C /* TestEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestEntity.h; sourceTree = "<group>"; };
-		99B8DEF31DE5B0510041AF8C /* TestEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestEntity.m; sourceTree = "<group>"; };
 		99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		99CF632A1EE141CE0034B457 /* ClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassInfo.h; sourceTree = "<group>"; };
+		99CF632B1EE141CE0034B457 /* ClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfo.m; sourceTree = "<group>"; };
+		99CF632D1EE142030034B457 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		99CF632E1EE142030034B457 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		99CF63301EE142A80034B457 /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		99CF63311EE142A80034B457 /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,13 +80,13 @@
 		99B8DED91DE5B0160041AF8C /* ORMDB */ = {
 			isa = PBXGroup;
 			children = (
-				99B8DEEE1DE5B0510041AF8C /* ClassC.h */,
-				99B8DEEF1DE5B0510041AF8C /* ClassC.m */,
-				99B8DEF01DE5B0510041AF8C /* TestBEntity.h */,
-				99B8DEF11DE5B0510041AF8C /* TestBEntity.m */,
-				99B8DEF21DE5B0510041AF8C /* TestEntity.h */,
-				99B8DEF31DE5B0510041AF8C /* TestEntity.m */,
 				99B8DEDA1DE5B0160041AF8C /* main.m */,
+				99CF632A1EE141CE0034B457 /* ClassInfo.h */,
+				99CF632B1EE141CE0034B457 /* ClassInfo.m */,
+				99CF632D1EE142030034B457 /* Student.h */,
+				99CF632E1EE142030034B457 /* Student.m */,
+				99CF63301EE142A80034B457 /* Teacher.h */,
+				99CF63311EE142A80034B457 /* Teacher.m */,
 			);
 			path = ORMDB;
 			sourceTree = "<group>";
@@ -103,8 +100,6 @@
 				99B8DEE51DE5B03F0041AF8C /* ORM.m */,
 				99B8DEE61DE5B03F0041AF8C /* ORMDB.h */,
 				99B8DEE71DE5B03F0041AF8C /* ORMDB.m */,
-				99B8DEE81DE5B03F0041AF8C /* ORMDBAttributes.h */,
-				99B8DEE91DE5B03F0041AF8C /* ORMDBAttributes.m */,
 			);
 			path = ORM;
 			sourceTree = "<group>";
@@ -165,14 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99CF632C1EE141CE0034B457 /* ClassInfo.m in Sources */,
+				99CF63321EE142A80034B457 /* Teacher.m in Sources */,
 				99B8DEEB1DE5B03F0041AF8C /* ORM.m in Sources */,
 				99B8DEEA1DE5B03F0041AF8C /* NSObject+ORM.m in Sources */,
-				99B8DEF41DE5B0510041AF8C /* ClassC.m in Sources */,
-				99B8DEF51DE5B0510041AF8C /* TestBEntity.m in Sources */,
-				99B8DEF61DE5B0510041AF8C /* TestEntity.m in Sources */,
-				99B8DEED1DE5B03F0041AF8C /* ORMDBAttributes.m in Sources */,
 				99B8DEEC1DE5B03F0041AF8C /* ORMDB.m in Sources */,
 				99B8DEDB1DE5B0160041AF8C /* main.m in Sources */,
+				99CF632F1EE142030034B457 /* Student.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +287,7 @@
 				99B8DEE01DE5B0160041AF8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
