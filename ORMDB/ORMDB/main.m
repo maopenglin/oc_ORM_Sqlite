@@ -12,7 +12,7 @@
 
 
 #import "NSObject+ORM.h"
-#import "ORMDB.h"
+
 double t(double last, char* key){
     clock_t now = clock();
     printf("time:%fs \t key:%s \n", (last != 0) ? (double)(now - last) / CLOCKS_PER_SEC : 0, key);
@@ -35,7 +35,7 @@ int main(int argc, const char * argv[]) {
             classInfo.classNumber=@(1);
             classInfo.classAddress=@"北京市海淀区";
             classInfo.dataInfo=@{@"a":@"b",@"c":@"d"};
-            //[classInfo save:@[@"classNumber"]];
+        
         
             Student *one=[[Student alloc] init];
             one.name=@"小红";
@@ -53,7 +53,7 @@ int main(int argc, const char * argv[]) {
             
             [classInfo save:@[@"classNumber"]];
         
-        [classInfo save:@[@"classNumber"]];
+       
         double t1 = t(0, "");
         
         
