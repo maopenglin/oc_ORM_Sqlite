@@ -12,4 +12,7 @@
 +(NSString *)foreignKey{
   return @"classNumber";
 }
++(NSString *)primarilyKey{
+    return @"sid";
+}
 @end

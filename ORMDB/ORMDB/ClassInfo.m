@@ -9,6 +9,7 @@
 #import "ClassInfo.h"
 
 @implementation ClassInfo
+
 +(NSString *)primarilyKey{
   return  @"classNumber";
 }

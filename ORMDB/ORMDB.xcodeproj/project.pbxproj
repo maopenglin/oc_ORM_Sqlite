@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		993600AB1EF0D935005F7450 /* ORMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 993600A51EF0D935005F7450 /* ORMDB.m */; };
+		993600AC1EF0D935005F7450 /* ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 993600A71EF0D935005F7450 /* ORM.m */; };
+		993600AD1EF0D935005F7450 /* NSObject+ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 993600A91EF0D935005F7450 /* NSObject+ORM.m */; };
+		999097061EE996C900FCA043 /* Test2.m in Sources */ = {isa = PBXBuildFile; fileRef = 999097051EE996C900FCA043 /* Test2.m */; };
+		999097091EE9976B00FCA043 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 999097081EE9976B00FCA043 /* Test.m */; };
+		99B7C8521EEA3BCA00C3CED8 /* NewOjb.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B7C8511EEA3BCA00C3CED8 /* NewOjb.m */; };
 		99B8DEDB1DE5B0160041AF8C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEDA1DE5B0160041AF8C /* main.m */; };
-		99B8DEEA1DE5B03F0041AF8C /* NSObject+ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE31DE5B03F0041AF8C /* NSObject+ORM.m */; };
-		99B8DEEB1DE5B03F0041AF8C /* ORM.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE51DE5B03F0041AF8C /* ORM.m */; };
-		99B8DEEC1DE5B03F0041AF8C /* ORMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 99B8DEE71DE5B03F0041AF8C /* ORMDB.m */; };
 		99B8DEF81DE5B0DF0041AF8C /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */; };
 		99CF632C1EE141CE0034B457 /* ClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CF632B1EE141CE0034B457 /* ClassInfo.m */; };
 		99CF632F1EE142030034B457 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CF632E1EE142030034B457 /* Student.m */; };
@@ -30,14 +33,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		993600A51EF0D935005F7450 /* ORMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORMDB.m; sourceTree = "<group>"; };
+		993600A61EF0D935005F7450 /* ORMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORMDB.h; sourceTree = "<group>"; };
+		993600A71EF0D935005F7450 /* ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORM.m; sourceTree = "<group>"; };
+		993600A81EF0D935005F7450 /* ORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORM.h; sourceTree = "<group>"; };
+		993600A91EF0D935005F7450 /* NSObject+ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ORM.m"; sourceTree = "<group>"; };
+		993600AA1EF0D935005F7450 /* NSObject+ORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ORM.h"; sourceTree = "<group>"; };
+		999097041EE996C900FCA043 /* Test2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test2.h; sourceTree = "<group>"; };
+		999097051EE996C900FCA043 /* Test2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test2.m; sourceTree = "<group>"; };
+		999097071EE9976B00FCA043 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		999097081EE9976B00FCA043 /* Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
+		99B7C8501EEA3BCA00C3CED8 /* NewOjb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOjb.h; sourceTree = "<group>"; };
+		99B7C8511EEA3BCA00C3CED8 /* NewOjb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOjb.m; sourceTree = "<group>"; };
 		99B8DED71DE5B0160041AF8C /* ORMDB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ORMDB; sourceTree = BUILT_PRODUCTS_DIR; };
 		99B8DEDA1DE5B0160041AF8C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		99B8DEE21DE5B03F0041AF8C /* NSObject+ORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ORM.h"; sourceTree = "<group>"; };
-		99B8DEE31DE5B03F0041AF8C /* NSObject+ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ORM.m"; sourceTree = "<group>"; };
-		99B8DEE41DE5B03F0041AF8C /* ORM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORM.h; sourceTree = "<group>"; };
-		99B8DEE51DE5B03F0041AF8C /* ORM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORM.m; sourceTree = "<group>"; };
-		99B8DEE61DE5B03F0041AF8C /* ORMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORMDB.h; sourceTree = "<group>"; };
-		99B8DEE71DE5B03F0041AF8C /* ORMDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORMDB.m; sourceTree = "<group>"; };
 		99B8DEF71DE5B0DF0041AF8C /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		99CF632A1EE141CE0034B457 /* ClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassInfo.h; sourceTree = "<group>"; };
 		99CF632B1EE141CE0034B457 /* ClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassInfo.m; sourceTree = "<group>"; };
@@ -81,12 +90,18 @@
 			isa = PBXGroup;
 			children = (
 				99B8DEDA1DE5B0160041AF8C /* main.m */,
+				999097071EE9976B00FCA043 /* Test.h */,
+				999097081EE9976B00FCA043 /* Test.m */,
 				99CF632A1EE141CE0034B457 /* ClassInfo.h */,
 				99CF632B1EE141CE0034B457 /* ClassInfo.m */,
 				99CF632D1EE142030034B457 /* Student.h */,
 				99CF632E1EE142030034B457 /* Student.m */,
 				99CF63301EE142A80034B457 /* Teacher.h */,
 				99CF63311EE142A80034B457 /* Teacher.m */,
+				999097041EE996C900FCA043 /* Test2.h */,
+				999097051EE996C900FCA043 /* Test2.m */,
+				99B7C8501EEA3BCA00C3CED8 /* NewOjb.h */,
+				99B7C8511EEA3BCA00C3CED8 /* NewOjb.m */,
 			);
 			path = ORMDB;
 			sourceTree = "<group>";
@@ -94,12 +109,12 @@
 		99B8DEE11DE5B0300041AF8C /* ORM */ = {
 			isa = PBXGroup;
 			children = (
-				99B8DEE21DE5B03F0041AF8C /* NSObject+ORM.h */,
-				99B8DEE31DE5B03F0041AF8C /* NSObject+ORM.m */,
-				99B8DEE41DE5B03F0041AF8C /* ORM.h */,
-				99B8DEE51DE5B03F0041AF8C /* ORM.m */,
-				99B8DEE61DE5B03F0041AF8C /* ORMDB.h */,
-				99B8DEE71DE5B03F0041AF8C /* ORMDB.m */,
+				993600A51EF0D935005F7450 /* ORMDB.m */,
+				993600A61EF0D935005F7450 /* ORMDB.h */,
+				993600A71EF0D935005F7450 /* ORM.m */,
+				993600A81EF0D935005F7450 /* ORM.h */,
+				993600A91EF0D935005F7450 /* NSObject+ORM.m */,
+				993600AA1EF0D935005F7450 /* NSObject+ORM.h */,
 			);
 			path = ORM;
 			sourceTree = "<group>";
@@ -162,10 +177,13 @@
 			files = (
 				99CF632C1EE141CE0034B457 /* ClassInfo.m in Sources */,
 				99CF63321EE142A80034B457 /* Teacher.m in Sources */,
-				99B8DEEB1DE5B03F0041AF8C /* ORM.m in Sources */,
-				99B8DEEA1DE5B03F0041AF8C /* NSObject+ORM.m in Sources */,
-				99B8DEEC1DE5B03F0041AF8C /* ORMDB.m in Sources */,
+				993600AD1EF0D935005F7450 /* NSObject+ORM.m in Sources */,
+				999097091EE9976B00FCA043 /* Test.m in Sources */,
+				993600AC1EF0D935005F7450 /* ORM.m in Sources */,
+				999097061EE996C900FCA043 /* Test2.m in Sources */,
+				99B7C8521EEA3BCA00C3CED8 /* NewOjb.m in Sources */,
 				99B8DEDB1DE5B0160041AF8C /* main.m in Sources */,
+				993600AB1EF0D935005F7450 /* ORMDB.m in Sources */,
 				99CF632F1EE142030034B457 /* Student.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

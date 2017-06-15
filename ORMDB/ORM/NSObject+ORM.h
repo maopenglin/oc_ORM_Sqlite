@@ -28,7 +28,7 @@
 + (id)getObject:(NSArray *)keys withValue:(NSArray *)values;
 
 /**
-  查询列表
+ 查询列表
  **/
 + (id)list:(NSArray *)keys withValue:(NSArray *)values;
 
@@ -45,4 +45,8 @@
  @param block 回调参数
  **/
 +(void)saveListData:(NSArray *)keys andBlock:(void (^) (NSMutableArray *datas))block;
+@end
+
+@interface NSArray(ORM)
+-(void)saveListDataWithKeys:(NSArray *)keys;
 @end

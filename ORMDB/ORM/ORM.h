@@ -11,6 +11,7 @@
 #import <objc/message.h>
 #define force_inline __inline__ __attribute__((always_inline))
 
+
 static force_inline NSNumber * _Nullable ORMDBNumberCreateFromID(__unsafe_unretained id _Nullable value) {
     static NSCharacterSet *dot;
     static NSDictionary *dic;
@@ -84,7 +85,8 @@ static force_inline NSString * _Nullable createWhereStatement(NSArray * _Nullabl
                 }else{
                     whereSql=[NSString stringWithFormat:@"WHERE %@ = %i ",key[i],[value[i] intValue]];
                 }
-            }else{
+            }
+            else{
                 whereSql=[NSString stringWithFormat:@"WHERE %@ = '%@' ",key[i],value[i]];
             }
         }else{
@@ -121,10 +123,39 @@ typedef NS_OPTIONS (NSUInteger ,ORMDBDataType){
     ORMDBDataTypeArray,
     ORMDBDataTypeMutableArray,
     ORMDBDataTypeDictionary,
-    ORMDBDataTypeMutableDictionary
+    ORMDBDataTypeMutableDictionary,
+    ORMDBDataTypeNSDate
     
 };
 
+@protocol ORM <NSObject>
+@optional
+/**
+ 创建表时忽略字段
+ **/
++(NSArray<NSString *> *_Nonnull)sqlIgnoreColumn;
+/**
+ 主键
+ **/
++(NSString * _Nonnull)primarilyKey;
+
+/**
+ 外键
+ **/
++(NSString * _Nonnull)foreignKey;
+
+/**
+ 外键映射表操作类型
+ 实现此方法 标识 关联字段不创建表，而是自动插入 或者 更新 到指定的表
+ key=>column
+ value=>tableName
+ 
+ +(NSDictionary<NSString *, NSString *> *_Nonnull)foreignKeyNotCreateTable{
+	return @{@"propertyName":@"ClassName"};
+ }
+ **/
++(NSDictionary<NSString *, NSString *> *_Nonnull)foreignKeyNotCreateTable;
+@end
 @interface ORM : NSObject
 
 + (void)createTableFromClass:(Class _Nullable ) cls;
@@ -143,6 +174,7 @@ typedef NS_OPTIONS (NSUInteger ,ORMDBDataType){
 @property (nonatomic, assign, readonly) ORMDBDataType type;
 @property (nullable, nonatomic, assign, readonly) Class cls;
 @property (nullable, nonatomic, strong, readonly) NSString *protocol;
+@property (nonatomic, strong) NSString  * _Nullable foreignTableName;
 @end
 
 
@@ -152,7 +184,26 @@ typedef NS_OPTIONS (NSUInteger ,ORMDBDataType){
 
 @property (nonatomic, assign, readonly) Class _Nullable cls;
 @property (nonatomic, strong, readonly) NSString * _Nullable name;
-@property (nullable, nonatomic, strong, readonly) NSMutableDictionary<NSString *, ORMDBClassPropertyInfo *> *propertyInfos;
+@property (nullable, nonatomic, strong, readonly) NSMutableArray *propertyInfos;
 
 @end
 
+static force_inline NSString* _Nullable SelectColumn(Class _Nullable cls){
+    ORMDBClassInfo *obj=[ORMDBClassInfo metaWithClass:cls];
+    NSMutableString *column=[[NSMutableString alloc] init];
+    for (ORMDBClassPropertyInfo *info in obj.propertyInfos) {
+        
+        if (info.type!=ORMDBDataTypeClass&&
+            info.type!=ORMDBDataTypeArray&&
+            info.type!=ORMDBDataTypeMutableArray&&
+            info.type!=ORMDBDataTypeUnknown){
+            [column appendFormat:@"%@,",info.name];
+        }
+    }
+    if (column.length-1>0) {
+        [column deleteCharactersInRange:NSMakeRange([column length]-1, 1)];
+        
+    }
+    return column;
+    
+}
