@@ -85,7 +85,7 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
 +(NSString * _Nonnull)foreignKey;
 ```
 
-##foreign update or insert 
+## foreign update or insert 
 ```
 +(NSDictionary<NSString *, NSString *> *_Nonnull)foreignKeyNotCreateTable;
 ```
