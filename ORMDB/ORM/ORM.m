@@ -548,13 +548,13 @@ static force_inline ORMDBDataType ORMDBGetDataType(const char *typeEncoding){
         
         if (i==0) {
             if ([type hasSuffix:@"NSCFNumber"]||[type hasSuffix:@"NSCFBoolean"]||[type compare:@"(null)"]==NSOrderedSame) {
-                whereSql=[NSString stringWithFormat:@"WHERE %@ = %i ",keys[i],[[entity valueForKey:keys[i]] intValue]];
+                whereSql=[NSString stringWithFormat:@"WHERE %@ = %li ",keys[i],[[entity valueForKey:keys[i]] longValue]];
             }else{
                 whereSql=[NSString stringWithFormat:@"WHERE %@ = '%@' ",keys[i],[entity valueForKey:keys[i]]];
             }
         }else{
             if ([type hasSuffix:@"NSCFNumber"]||[type hasSuffix:@"NSCFBoolean"]||[type compare:@"(null)"]==NSOrderedSame) {
-                whereSql=[NSString stringWithFormat:@"%@ AND  %@ = %i  ",whereSql,keys[i],[[entity valueForKey:keys[i]] intValue]];
+                whereSql=[NSString stringWithFormat:@"%@ AND  %@ = %li  ",whereSql,keys[i],[[entity valueForKey:keys[i]] longValue]];
             }else{
                 whereSql=[NSString stringWithFormat:@"%@ AND  %@ = '%@'  ",whereSql,keys[i],[entity valueForKey:keys[i]]];
             }
