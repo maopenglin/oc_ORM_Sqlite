@@ -151,7 +151,7 @@ typedef NS_OPTIONS (NSUInteger ,ORMDBDataType){
  value=>tableName
  
  +(NSDictionary<NSString *, NSString *> *_Nonnull)foreignKeyNotCreateTable{
-	return @{@"propertyName":@"ClassName"};
+	return @{@"conversation_user":@"EXUPersonInfo"};
  }
  **/
 +(NSDictionary<NSString *, NSString *> *_Nonnull)foreignKeyNotCreateTable;

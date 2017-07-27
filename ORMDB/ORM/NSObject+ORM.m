@@ -56,6 +56,24 @@ static dispatch_once_t onceToken;
         [ORM deleteObject:[self class] withKeys:keys andValues:value];
     });
 }
+
++ (void)execSql:(void (^)(SqlOperationQueueObject *db))block{
+    dispatch_sync(_queue, ^() {
+        [ORMDB beginTransaction];
+        SqlOperationQueueObject *sqlObj=[[SqlOperationQueueObject alloc] init];
+        block(sqlObj);
+        [ORMDB commitTransaction];
+    });
+    
+}
+
++ (NSMutableArray *)queryForObjectArray:(NSString *)sql{
+    return [ORMDB queryDB:[self class] andSql:sql];
+}
+
++ (NSMutableDictionary *)queryForDictionary:(NSString *)sql{
+    return  [ORMDB queryWithSql:sql];
+}
 @end
 
 @implementation NSArray(ORM)
@@ -68,6 +86,34 @@ static dispatch_once_t onceToken;
         }
         [ORMDB commitTransaction];
     });
+}
+
+@end
+
+@implementation SqlOperationQueueObject
+
+/**
+ 执行update sql
+ **/
+- (void)execUpdate:(NSString *)sql{
+    [ORMDB execsql:sql];
+}
+
+/**
+ 执行select sql
+ **/
+- (void)execDelete:(NSString *)sql{
+    [ORMDB execsql:sql];
+}
+
+/**
+ 根据 select sql 返回是否 存在结果集
+ 
+ select * from XXX where uid=1 ;
+ return false 标识 不存在uid=1的数据
+ **/
+- (BOOL)rowExist:(NSString *)sql{
+    return	[ORMDB rowExist:sql];
 }
 
 @end

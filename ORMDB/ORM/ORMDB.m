@@ -186,8 +186,8 @@ static dispatch_once_t onceToken;
                                                                               setterMethod, value);
                             } break;
                             case ORMDBDataTypeInt: {
-                                ((void (*)(id, SEL, long))(void *)objc_msgSend)(
-                                                                                (id)object, setterMethod, [value longLongValue]);
+                                ((void (*)(id, SEL, long long))(void *)objc_msgSend)(
+                                                                                     (id)object, setterMethod, [value longLongValue]);
                             } break;
                             case ORMDBDataTypeBool: {
                                 ((void (*)(id, SEL, int))(void *)objc_msgSend)(
@@ -320,7 +320,7 @@ static dispatch_once_t onceToken;
                         if ( CFNumberIsFloatType((CFNumberRef)objvalue)) {
                             sqlite3_bind_double(statement, y, [objvalue doubleValue]);
                         } else {
-                            sqlite3_bind_int64(statement, y, [objvalue longValue]);
+                            sqlite3_bind_int64(statement, y, [objvalue longLongValue]);
                         }
                     }
                         break;
@@ -329,7 +329,7 @@ static dispatch_once_t onceToken;
                         if (!objvalue) {
                             date=[NSDate dateWithTimeIntervalSince1970:0];
                         }
-                        sqlite3_bind_int64(statement, y,[date timeIntervalSince1970]);
+                        sqlite3_bind_double(statement, y,[date timeIntervalSince1970]);
                     }
                         break;
                     case ORMDBDataTypeFloat:

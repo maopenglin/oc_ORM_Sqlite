@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-#define showsql false
+#define showsql true
 @interface ORMDB : NSObject
 
 /**
