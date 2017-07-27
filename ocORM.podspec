@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ocORM"
-  s.version      = "2.5.0"
+  s.version      = "23.0.0"
   s.summary      = "Objective c 自动保存到数据库"
 
   # This description is used to generate tags and improve search results.
