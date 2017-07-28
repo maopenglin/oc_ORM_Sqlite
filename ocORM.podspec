@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ocORM"
-  s.version      = "23.0.0"
+  s.version      = "3.0.1"
   s.summary      = "Objective c 自动保存到数据库"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-              ocORM能够方便的将实例对象保存到数据库，并支持队列同步，防止数据库死锁
+                     ocORM能够方便的将实例对象保存到数据库，并支持队列同步，防止数据库死锁
                    DESC
 
   s.homepage     = "https://github.com/maopenglin/oc_ORM_Sqlite"
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/maopenglin/oc_ORM_Sqlite.git", :tag => "3.0.0" }
+  s.source       = { :git => "https://github.com/maopenglin/oc_ORM_Sqlite.git", :tag => "4.0" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -37,7 +37,7 @@
 + (void)createTable;
 /**
  保存数据
- @param keys 数据保存参数条件
+ @param keyes 数据保存参数条件
  **/
 - (void)save:(NSArray *)keyes;
 
