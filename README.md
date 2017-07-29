@@ -2,7 +2,8 @@
 # ocORM
 Objective C 实体对象转换成sql 语句，支持数据类型  int float double number class array
 
-##安装 //最新的版本4.0.2
+##安装 
+###最新的版本4.0.2
  pod 'ocORM', '~> 4.0.2'
 
 ##使用
