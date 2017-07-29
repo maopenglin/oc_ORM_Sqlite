@@ -2,14 +2,18 @@
 # ocORM
 Objective C 实体对象转换成sql 语句，支持数据类型  int float double number class array
 
-##安装
- pod 'ocORM', '~> 2.0.1'
+##安装 //最新的版本4.0.2
+ pod 'ocORM', '~> 4.0.2'
 
 ##使用
 ```
 #import "NSObject+ORM.h"
 ```
-
+##配置数据库路径
+```
+ [ORMDB configDBPath:@"/Users/test/dbpath/test.db"];
+```
+ 
 ##创建数据库 
 ```
 [ClassInfo createTable];
@@ -43,13 +47,6 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
     [classInfo save:@[@"classNumber"]];
 
 
-    //批量保存
-    [Student saveListData:@[@"name"] andBlock:^(NSMutableArray *datas) {
-    for(int i=0;i<20000;i++){
-        [datas addObject:one];
-    }
-
-
 }];
 
     
@@ -63,15 +60,38 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
 ```
     NSMutableArray *arrt=[ClassInfo list:@[@"classNumber"] withValue:@[@(1)] ];
 ```
-##自定义查询
+##自定义查询并封装为对象
 ```
-    NSArray *arr= [ORMDB queryDB:[NewOjb class] andSql:@"SELECT * FROM NewOjb"];
+   NSMutableArray *resultArray = [Test queryForObjectArray:@"Select * from Test"];
+```
+##自定义查询一行记录并封装为字典
+```
+ NSMutableDictionary *resultDic = [Test queryForDictionary:@"Select * from Test"];
 ```
 ##保存数组
 ```
   [arr saveListDataWithKeys:@[@"id"]];
 ```
 
+##自定义sql操作
+```
+[Test execSql:^(SqlOperationQueueObject *db) {
+                [db execDelete:@"delte from Test"];//删除sql语句
+                [db execUpdate:@"update Test set xxx=x where xxx=x "];//upate sql语句
+               BOOL result = [db rowExist:@"select * from Test where xxx=x"];
+            }];
+```
+
+##清空表数据
+```
+    [ClassInfo clearTable];
+```
+##根据条件删除数据
+```
+[Test clearTable:@[@"key1",@[@"key2"]] withValue:@[@"value1",@"value2"]];
+```
+
+#模型类方法
 ##ignore column
 ```
 +(NSArray<NSString *> *_Nonnull)sqlIgnoreColumn;
@@ -88,10 +108,6 @@ Objective C 实体对象转换成sql 语句，支持数据类型  int float doub
 ## foreign update or insert 
 ```
 +(NSDictionary<NSString *, NSString *> *_Nonnull)foreignKeyNotCreateTable;
-```
-##清空表数据
-```
-    [ClassInfo clearTable];
 ```
 
 

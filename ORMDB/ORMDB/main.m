@@ -96,9 +96,22 @@ int main(int argc, const char * argv[]) {
             [test save:@[@"one"]];
             
             [Test getObject:nil withValue:nil];
+            
+            
+          NSMutableDictionary *resultDic = [Test queryForDictionary:@"Select * from Test"];
+            
+            NSMutableArray *resultArray = [Test queryForObjectArray:@"Select * from Test"];
+            
+            [Test execSql:^(SqlOperationQueueObject *db) {
+                [db execDelete:@"delte from Test"];//删除sql语句
+                [db execUpdate:@"update Test set xxx=x where xxx=x "];//upate sql语句
+               BOOL result = [db rowExist:@"select * from Test where xxx=x"];
+            }];
+            
             [ORMDB queryWithSql:@"Select * from Test"];
           NSArray *arr= [ORMDB queryDB:[NewOjb class] andSql:@"select * from NewOjb"];
            
+            [Test clearTable:@[@"key1",@[@"key2"]] withValue:@[@"value1",@"value2"]];
         });
     }
         
